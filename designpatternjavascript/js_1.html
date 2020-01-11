@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title> 
+            This is a webpage in javascript
+        </title>
+
+
+    <meta charset="utf-8">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    
+    <script src="beluga.js"></script>
+
+    </head>
+
+        <body>
+          
+            <button id="btn1" onclick="alert('in the head bb');">button 1</button>
+
+
+            <div class="container">
+                <h1>event propagation</h1>    
+
+                <div id="d1" style="background: red; padding: 25px;">
+                    text inside div
+
+                    <span style="background: yellow;"> 
+                        text inside span
+                    </span>
+                    
+                </div>
+            </div>
+
+            <div class="container">>  
+                <h1>Event delegation</h1>
+                <ul>
+                    <li>lista 1</li>
+                    <li>lista 2</li>
+                    <li>lista 3</li>
+                </ul> 
+            </div>
+
+
+        <script>
+
+
+            var ul = document.querySelector('ul');
+
+            var li = document.querySelectorAll('li');
+
+
+            var x = 0;
+
+            while (li[x]) {
+                li[x].addEventListener('click', function(e) {
+                    console.log('clicou na li');
+                });
+                x++;
+            }
+
+            ul.addEventListener('click', function(e) {
+                e.stopPropagation();
+                console.log(this);
+                console.log(e.currentTarget);
+                console.log(e.target);
+
+             
+            });
+
+            var d1 = document.querySelector('#d1');
+            var d1span = document.querySelector('#d1 span');            
+
+            d1.addEventListener('click', function(evt) {
+                console.log('click on d1');
+                console.log(evt.currentTarget);
+                console.log(evt.target);
+                console.log(this);
+            }, false);
+
+            d1span.addEventListener('click', function(e) {
+                console.log('click on d1spam');
+                e.stopImmediatePropagation();
+            }, false);
+
+
+            var btn1 = document.getElementById('btn1');
+
+            btn1.addEventListener("click", function() {
+                alert('dom level 2');
+            });
+
+            btn1.addEventListener("click", function() {
+                alert('dom level 2 with second click');
+            });
+
+            btn1.onclick = function() {
+                alert('something is happening here');
+                alert('something is happening here 2');
+            }
+
+            //creating three objects
+
+            var pessoa1 = {
+                nome: 'daniel1',
+                sobrenome: 'qualquer1'
+            };
+
+            var pessoa2 = {
+                nome: 'daniel2',
+                sobrenome: 'qualquer2'
+            };
+
+            var pessoa3 = {
+                nome: 'daniel3',
+                sobrenome: 'qualquer3'
+            };
+
+
+            var pessoas = [
+                pessoa1,
+                pessoa2,
+                pessoa3
+            ]
+
+
+
+
+        </script>
+
+        </body>
+</html>
