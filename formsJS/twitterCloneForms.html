@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+
+
+<html>
+    <head>
+        <title>
+            events test of interaction
+        </title>
+        <meta charset="utf-8">
+
+    </head>
+
+    <body>
+
+        <h1> Twitter clone </h1>
+
+        <div class="container">
+            <textarea id="msg" cols="50" rows="10" maxlength="120"> 
+            </textarea>
+
+            <div id="restaContainer" style="display: none;">
+                Restam <span id="spn"></span> caracteres      
+            </div>
+        </div>
+
+
+        <script>
+            
+            (function() {
+                'use strict'
+
+                var msgR = document.getElementById('msg');
+                //var spamR = document.getElementById('spn');
+                var max = msgR.maxLength;
+
+                var restaR = document.getElementById('restaContainer');
+                var spamR = document.querySelector('span');
+
+                restaR.style.display = 'block';
+
+                spamR.textContent = max;
+                // always that he copy and past some words
+                // will output the function
+                // which is put together with msg id
+
+                msgR.addEventListener('input', checkLength);
+
+
+                function checkLength(e) {
+                    spamR.textContent = max - msgR.value.length;
+
+                }
+
+            })()
+
+        </script>
+
+    </body>
+</html>
