@@ -20,7 +20,7 @@
                 <label for="txtPass">Senha</label>
                 <input type="password" id="txtPass" name="pass">
                 <br>
-                <button type="button" id="btn">Logar</button>
+                <button type="submit" id="btn">Logar</button>
             </form>
         </div>
 
@@ -29,18 +29,19 @@
             
             (function() {
                 'use strict'
+
+                var form = document.querySelector('form');
                 var txtUser = document.getElementById('txtUser');
                 var txtPass = document.getElementById('txtPass');
                 var btn = document.getElementById('btn');
 
-                btn.addEventListener('click', function() {
-                    alert('button was clicked');
-                
-                    if (!txtUser.value || !txtPass.value) {
-                        alert('it is needed to write wall the empty spaces');
+                form.addEventListener('submit', function(e) {
+                    if (!txtUser.value || !txtPass) {
+                        alert('fill up the fields');
                     }
-               
+                    e.preventDefault();
                 });
+            
             })()
 
         </script>
