@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+
+
+<html>
+    <head>
+        <title>
+            events test of interaction
+        </title>
+        <meta charset="utf-8">
+
+    </head>
+
+    <body>
+
+        <div class="container">
+            <form action="#">
+                <label for="txtUser">Usuario</label>
+                <input type="text" id="txtUser" name="user"> <br>
+                <label for="txtPass">Senha</label>
+                <input type="password" id="txtPass" name="pass">
+                <br>
+                <button type="button" id="btn">Logar</button>
+            </form>
+        </div>
+
+
+        <script>
+            
+            (function() {
+                'use strict'
+                var txtUser = document.getElementById('txtUser');
+                var txtPass = document.getElementById('txtPass');
+                var btn = document.getElementById('btn');
+
+                btn.addEventListener('click', function() {
+                    alert('button was clicked');
+                
+                    if (!txtUser.value || !txtPass.value) {
+                        alert('it is needed to write wall the empty spaces');
+                    }
+               
+                });
+            })()
+
+        </script>
+
+    </body>
+</html>
